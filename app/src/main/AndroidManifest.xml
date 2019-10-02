@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CanvasActivity"></activity>
-        <activity android:name=".PaletteActivity">
+        <activity android:name=".PaletteActivity" android:icon="@mipmap/ic_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
