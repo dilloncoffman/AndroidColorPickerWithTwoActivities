@@ -12,6 +12,7 @@ public class PaletteActivity extends AppCompatActivity {
     Spinner spinner;
     ConstraintLayout paletteLayout;
     String[] colors = {"Blue", "Cyan", "Gray", "Green", "Magenta", "Red", "Black", "Blue", "Green", "Yellow"};
+    int checkIfSpinnerReady = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +29,11 @@ public class PaletteActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                canvasIntent.putExtra("BACKGROUND_COLOR", colors[position]);
-                startActivity(canvasIntent);
+                if (++checkIfSpinnerReady > 1) {
+                    Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
+                    canvasIntent.putExtra("BACKGROUND_COLOR", colors[position]);
+                    startActivity(canvasIntent);
+                }
             }
 
             @Override
