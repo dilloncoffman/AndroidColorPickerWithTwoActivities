@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ColorPickerWithTwoActivities</string>
+    <string-array name="colors">
+        <item>Blue</item>
+        <item>Cyan</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Magenta</item>
+        <item>Red</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Yellow</item>
+    </string-array>
 </resources>
