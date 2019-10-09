@@ -1,6 +1,7 @@
 package edu.temple.colorpickerwithtwoactivities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,13 +12,16 @@ import android.widget.Spinner;
 public class PaletteActivity extends AppCompatActivity {
     Spinner spinner;
     ConstraintLayout paletteLayout;
-    String[] colors = {"Blue", "Cyan", "Gray", "Green", "Magenta", "Red", "Black", "Blue", "Green", "Yellow"};
+    String[] colors;
     int checkIfSpinnerReady = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Resources res = getResources();
+        colors = res.getStringArray(R.array.colors);
 
         spinner = findViewById(R.id.colorSpinner);
         paletteLayout = findViewById(R.id.paletteLayout);
