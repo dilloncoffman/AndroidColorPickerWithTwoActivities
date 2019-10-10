@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ColorPickerWithTwoActivities</string>
+    <string name="palette_action_bar_title">Paleta Actividad</string>
+    <string name="canvas_action_bar_title">Lona Actividad</string>
+    <string-array name="colors">
+        <item>Azul</item>
+        <item>Cian</item>
+        <item>Gris</item>
+        <item>Verde</item>
+        <item>Magenta</item>
+        <item>Rojo</item>
+        <item>Negro</item>
+        <item>Azul</item>
+        <item>Verde</item>
+        <item>Amarillo</item>
+    </string-array>
+</resources>

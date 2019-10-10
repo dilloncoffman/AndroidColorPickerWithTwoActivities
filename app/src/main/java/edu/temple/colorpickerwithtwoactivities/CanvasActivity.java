@@ -1,6 +1,7 @@
 package edu.temple.colorpickerwithtwoactivities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,9 @@ public class CanvasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_canvas);
 
         canvasLayout = findViewById(R.id.canvasLayout);
-        getSupportActionBar().setTitle("Canvas Activity");
+        Resources res = getResources();
+        String canvasActionBarTitle = res.getString(R.string.canvas_action_bar_title);
+        getSupportActionBar().setTitle(canvasActionBarTitle);
 
         Intent bgColorInt = getIntent();
         // Get the BACKGROUND_COLOR passed from PaletteActivity

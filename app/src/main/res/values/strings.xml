@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ColorPickerWithTwoActivities</string>
+    <string name="palette_action_bar_title">Palette Activity</string>
+    <string name="canvas_action_bar_title">Canvas Activity</string>
     <string-array name="colors">
         <item>Blue</item>
         <item>Cyan</item>

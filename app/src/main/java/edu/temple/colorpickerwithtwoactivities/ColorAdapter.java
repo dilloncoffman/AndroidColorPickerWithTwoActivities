@@ -46,7 +46,32 @@ public class ColorAdapter extends BaseAdapter {
         textView.setText(colors[position]);
         textView.setTextSize(24);
         textView.setPadding(5, 5, 5, 5);
-        textView.setBackgroundColor(Color.parseColor(colors[position]));
+        switch (colors[position]) {
+            case "Azul":
+                textView.setBackgroundColor(Color.BLUE);
+                break;
+            case "Cian":
+                textView.setBackgroundColor(Color.CYAN);
+                break;
+            case "Gris":
+                textView.setBackgroundColor(Color.GRAY);
+                break;
+            case "Verde":
+                textView.setBackgroundColor(Color.GREEN);
+                break;
+            case "Rojo":
+                textView.setBackgroundColor(Color.RED);
+                break;
+            case "Negro":
+                textView.setBackgroundColor(Color.BLACK);
+                break;
+            case "Amarillo":
+                textView.setBackgroundColor(Color.YELLOW);
+                break;
+            default:
+                textView.setBackgroundColor(Color.parseColor(colors[position]));
+                break;
+        }
 
         return textView;
     }

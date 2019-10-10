@@ -25,17 +25,45 @@ public class PaletteActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.colorSpinner);
         paletteLayout = findViewById(R.id.paletteLayout);
-        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, colors);
+        final ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, colors);
 
         spinner.setAdapter(colorAdapter);
-        getSupportActionBar().setTitle("Palette Activity");
+        String paletteActionBarTitle = res.getString(R.string.palette_action_bar_title);
+        getSupportActionBar().setTitle(paletteActionBarTitle);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (++checkIfSpinnerReady > 1) {
                     Intent canvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                    canvasIntent.putExtra("BACKGROUND_COLOR", colors[position]);
+                    String colorToUse;
+                    switch (colors[position]) {
+                        case "Azul":
+                            colorToUse = "Blue";
+                            break;
+                        case "Cian":
+                            colorToUse = "Cyan";
+                            break;
+                        case "Gris":
+                            colorToUse = "Gray";
+                            break;
+                        case "Verde":
+                            colorToUse = "Green";
+                            break;
+                        case "Rojo":
+                            colorToUse = "Red";
+                            break;
+                        case "Negro":
+                            colorToUse = "Black";
+                            break;
+                        case "Amarillo":
+                            colorToUse = "Yellow";
+                            break;
+                        default:
+                            colorToUse = colors[position];
+                            break;
+                    }
+                    canvasIntent.putExtra("BACKGROUND_COLOR", colorToUse);
                     startActivity(canvasIntent);
                 }
             }
