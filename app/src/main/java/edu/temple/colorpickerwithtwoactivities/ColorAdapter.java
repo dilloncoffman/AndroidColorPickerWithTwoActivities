@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class ColorAdapter extends BaseAdapter {
 
-    Context context;
-    String[] colors;
+    private Context context;
+    private String[] colors;
 
     public ColorAdapter(Context context, String[] colors) {
         this.context = context;
