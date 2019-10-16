@@ -2,6 +2,7 @@ package edu.temple.colorpickerwithtwoactivities;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-public class PaletteActivity extends AppCompatActivity {
+public class PaletteActivity extends AppCompatActivity implements PaletteFragment.ColorSelectedInterface {
     Spinner spinner;
     ConstraintLayout paletteLayout;
     String[] colors;
@@ -73,5 +74,10 @@ public class PaletteActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void colorSelected(String colorName) {
+        
     }
 }
