@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 
 /**
@@ -18,16 +19,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class PaletteFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    String[] colors;
+    private static final String COLOR_KEY = "colors";
+    private ColorSelectedInterface fragmentParent;
 
     public PaletteFragment() {
         // Required empty public constructor
@@ -37,26 +31,23 @@ public class PaletteFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param colors String.
      * @return A new instance of fragment PaletteFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static PaletteFragment newInstance(String param1, String param2) {
-        PaletteFragment fragment = new PaletteFragment();
+    public static PaletteFragment newInstance(String[] colors) {
+        PaletteFragment paletteFragment = new PaletteFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        args.putStringArray(COLOR_KEY, colors);
+        paletteFragment.setArguments(args);
+        return paletteFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            colors = bundle.getStringArray(COLOR_KEY);
         }
     }
 
@@ -64,21 +55,17 @@ public class PaletteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_palette, container, false);
-    }
+        Spinner spinner = (Spinner) inflater.inflate(R.layout.fragment_palette, container, false);
+        spinner.setAdapter(new ColorAdapter((Context) fragmentParent, colors));
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return spinner;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof ColorSelectedInterface) {
+            fragmentParent = (ColorSelectedInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -88,7 +75,7 @@ public class PaletteFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        fragmentParent = null;
     }
 
     /**
@@ -101,8 +88,7 @@ public class PaletteFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public interface ColorSelectedInterface {
+        void colorSelected(String colorName);
     }
 }
