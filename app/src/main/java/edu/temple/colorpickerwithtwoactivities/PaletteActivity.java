@@ -23,9 +23,6 @@ public class PaletteActivity extends AppCompatActivity implements PaletteFragmen
                 .add(R.id.container_1, paletteFragment)
                 .add(R.id.container_2, canvasFragment)
                 .commit();
-
-        // TODO Implement colorSelected method below and create CanvasFragment, use R.id.container_2 as a container for CanvasFragment here in PaletteActivity
-
     }
 
     @Override
